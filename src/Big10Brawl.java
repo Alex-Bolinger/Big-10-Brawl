@@ -14,7 +14,7 @@ public class Big10Brawl {
     }
 
     public void initFrame() {
-        welcome.setSize(new Dimension(640,360));
+        welcome.setSize(1550,838);
         welcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         welcome.setTitle("Big10Brawl");
         welcome.add(new JComponent() {
@@ -24,5 +24,6 @@ public class Big10Brawl {
         });
         welcome.setVisible(true);
         welcome.repaint();
+
     }
 }
