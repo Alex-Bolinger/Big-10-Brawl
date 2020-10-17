@@ -6,6 +6,15 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
+/**
+ * Big 10 Brawl
+ *
+ * <p>A battle between the mascots of some of the Big 10 schools</p>
+ *
+ * @author Brass Hax
+ * @version September 17, 2020
+ */
+
 public class Big10Brawl {
     public static void main(String[] args) {
         Big10Brawl b10B = new Big10Brawl();
@@ -105,6 +114,8 @@ public class Big10Brawl {
 
     }
 
+
+    //changes the color of the start button
     public void changeStartColor() {
         if (startColor.equals(new Color(0,0,0))) {
             startColor = new Color(255,255,255);
@@ -116,6 +127,7 @@ public class Big10Brawl {
         welcome.repaint();
     }
 
+    //changes the color of the join button
     public void changeJoinColor() {
         if (joinColor.equals(new Color(0,0,0))) {
             joinColor = new Color(255,255,255);
