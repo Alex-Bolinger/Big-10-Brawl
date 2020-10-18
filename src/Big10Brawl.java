@@ -113,6 +113,7 @@ public class Big10Brawl {
     }
 
     public void startSelectionScreen() {
-
+        CharacterSelect cs1 = new CharacterSelect();
+        cs1.initFrame();
     }
 }
