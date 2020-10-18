@@ -32,6 +32,7 @@ public class CharacterSelect {
     private BufferedImage sparky;
     private BufferedImage wolverine;
     private BufferedImage hoosier;
+    private BufferedImage blueSquare;
 
     public boolean finished;
 
@@ -113,23 +114,30 @@ public class CharacterSelect {
                         System.out.println("Stack Error");
                     }
                 }
+                if (blueSquare == null) {
+                    try {
+                        blueSquare = ImageIO.read(new File("bin/Character Select/Character Sprites/Outline_Blue.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
                 if (playerNumber > 1) {
                     if (player1Select == 0) {
-                        g.drawImage(pete,313,671,null);
+                        g.drawImage(blueSquare,181,122,null);
                     } else if (player1Select == 1) {
-                        g.drawImage(hawkeye,313,696,null);
+                        g.drawImage(blueSquare,486,122,null);
                     } else if (player1Select == 4) {
-                        g.drawImage(buckeye,303,669,null);
+                        g.drawImage(buckeye,181,466,null);
                     } else if (player1Select == 3) {
-                        g.drawImage(hoosier,352,662,null);
+                        g.drawImage(blueSquare,1099,466,null);
                     } else if (player1Select == 2) {
-                        g.drawImage(badger,321,674,null);
+                        g.drawImage(blueSquare,793,122,null);
                     } else if (player1Select == 5) {
-                        g.drawImage(sparky,333,667,null);
+                        g.drawImage(blueSquare,486,466,null);
                     } else if (player1Select == 6) {
-                        g.drawImage(wolverine,326,671,null);
+                        g.drawImage(blueSquare,793,466,null);
                     } else if (player1Select == 7) {
-                        g.drawImage(gopher,337,673,null);
+                        g.drawImage(blueSquare,1099,122,null);
                     }
                 }
                 if (purdue == null) {
@@ -144,29 +152,29 @@ public class CharacterSelect {
                 }
 
                 g.setColor(purdue);
-                g.fillRect(117,98,180,180);
+                g.fillRect(198,138,236,236);
                 g.setColor(iowa);
-                g.fillRect(346,98,180,180);
+                g.fillRect(504,138,236,236);
                 g.setColor(wisconsin);
-                g.fillRect(575,98,180,180);
+                g.fillRect(811,138,236,236);
                 g.setColor(minnesota);
-                g.fillRect(804,98,180,180);
+                g.fillRect(1117,138,236,236);
                 g.setColor(osu);
-                g.fillRect(117,357,180,180);
+                g.fillRect(198,484,236,236);
                 g.setColor(msu);
-                g.fillRect(346,357,180,180);
+                g.fillRect(504,484,236,236);
                 g.setColor(michigan);
-                g.fillRect(575,357,180,180);
+                g.fillRect(811,484,236,236);
                 g.setColor(indiana);
-                g.fillRect(804,357,180,180);
-                g.drawImage(pete,130,112,null);
-                g.drawImage(hawkeye,352,136,null);
-                g.drawImage(badger,580,114,null);
-                g.drawImage(gopher,809,114,null);
-                g.drawImage(buckeye,123,366,null);
-                g.drawImage(sparky,359,367,null);
-                g.drawImage(wolverine,579,371,null);
-                g.drawImage(hoosier,824,362,null);
+                g.fillRect(1117,484,236,236);
+                g.drawImage(pete,242,207,null);
+                g.drawImage(hawkeye,546,231,null);
+                g.drawImage(badger,844,210,null);
+                g.drawImage(gopher,1151,209,null);
+                g.drawImage(buckeye,232,548,null);
+                g.drawImage(sparky,543,549,null);
+                g.drawImage(wolverine,846,553,null);
+                g.drawImage(hoosier,1174,471,null);
             }
         };
         player1.setSize(1550,838);
@@ -191,35 +199,35 @@ public class CharacterSelect {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 111 && e.getY() <= 310) {
+                if (e.getX() >= 198 && e.getX() <= 434 && e.getY() >= 138 && e.getY() <= 374) {
                     characterValue = 0;
                     player1Select = 0;
                     changePurdueButtonColor();
-                } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 111 && e.getY() <= 310) {
+                } else if (e.getX() >= 504 && e.getX() <= 740 && e.getY() >= 138 && e.getY() <= 374) {
                     characterValue = 1;
                     player1Select = 1;
                     changeIowaButtonColor();
-                } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 111 && e.getY() <= 310) {
+                } else if (e.getX() >= 811 && e.getX() <= 1047 && e.getY() >= 138 && e.getY() <= 374) {
                     characterValue = 2;
                     player1Select = 2;
                     changeWisconsinButtonColor();
-                } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 111 && e.getY() <= 310) {
+                } else if (e.getX() >= 1117 && e.getX() <= 1353 && e.getY() >= 138 && e.getY() <= 374) {
                     characterValue = 7;
                     player1Select = 7;
                     changeMinnesotaButtonColor();
-                } else if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 198 && e.getX() <= 434 && e.getY() >= 484 && e.getY() <= 720) {
                     characterValue = 4;
                     player1Select = 4;
                     changeOSUButtonColor();
-                } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 504 && e.getX() <= 740 && e.getY() >= 484 && e.getY() <= 720) {
                     characterValue = 5;
                     player1Select = 5;
                     changeMSUButtonColor();
-                } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 811 && e.getX() <= 1047 && e.getY() >= 484 && e.getY() <= 720) {
                     characterValue = 6;
                     player1Select = 6;
                     changeMichiganButtonColor();
-                } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 1117 && e.getX() <= 1353 && e.getY() >= 484 && e.getY() <= 720) {
                     characterValue = 3;
                     player1Select = 3;
                     changeIndianaButtonColor();
@@ -228,28 +236,28 @@ public class CharacterSelect {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 111 && e.getY() <= 310) {
+                if (e.getX() >= 198 && e.getX() <= 434 && e.getY() >= 138 && e.getY() <= 374) {
                     changePurdueButtonColor();
                     finished = true;
-                } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 111 && e.getY() <= 310) {
+                } else if (e.getX() >= 504 && e.getX() <= 740 && e.getY() >= 138 && e.getY() <= 374) {
                     changeIowaButtonColor();
                     finished = true;
-                } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 111 && e.getY() <= 310) {
+                } else if (e.getX() >= 811 && e.getX() <= 1047 && e.getY() >= 138 && e.getY() <= 374) {
                     changeWisconsinButtonColor();
                     finished = true;
-                } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 111 && e.getY() < 310) {
+                } else if (e.getX() >= 1117 && e.getX() <= 1353 && e.getY() >= 138 && e.getY() <= 374) {
                     changeMinnesotaButtonColor();
                     finished = true;
-                } else if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 198 && e.getX() <= 434 && e.getY() >= 484 && e.getY() <= 720) {
                     changeOSUButtonColor();
                     finished = true;
-                } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 504 && e.getX() <= 740 && e.getY() >= 484 && e.getY() <= 720) {
                     changeMSUButtonColor();
                     finished = true;
-                } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 811 && e.getX() <= 1047 && e.getY() >= 484 && e.getY() <= 720) {
                     changeMichiganButtonColor();
                     finished = true;
-                } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 369 && e.getY() <= 568) {
+                } else if (e.getX() >= 1117 && e.getX() <= 1353 && e.getY() >= 484 && e.getY() <= 720) {
                     changeIndianaButtonColor();
                     finished = true;
                 }
