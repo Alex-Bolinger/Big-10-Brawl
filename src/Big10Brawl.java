@@ -25,6 +25,7 @@ public class Big10Brawl {
     private JFrame welcome;
     private JFrame playerSelect;
     private JComponent welComp;
+    private BufferedImage icon;
 
     private Player player1;
     private Player player2;
@@ -44,11 +45,16 @@ public class Big10Brawl {
 
     public Big10Brawl() {
         welcome = new JFrame();
+        if (icon == null) {
+            try {
+                icon = ImageIO.read(new File("bin/Frame_Icon_Image.png"));
+            } catch (IOException e) {
+                System.out.println("Stack error");
+            }
+        }
+        welcome.setIconImage(icon);
         welComp = new JComponent() {
             private BufferedImage bg;
-
-
-
             public void paint(Graphics g) {
                 //draw background here
                 if (bg == null) {

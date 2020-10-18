@@ -22,6 +22,16 @@ public class CharacterSelect {
     private Color indiana;
 
     private int characterValue;
+    private int player1Select = 0;
+
+    private BufferedImage pete;
+    private BufferedImage hawkeye;
+    private BufferedImage badger;
+    private BufferedImage gopher;
+    private BufferedImage buckeye;
+    private BufferedImage sparky;
+    private BufferedImage wolverine;
+    private BufferedImage hoosier;
 
     public boolean finished;
 
@@ -42,6 +52,81 @@ public class CharacterSelect {
                     }
                 }
                 g.drawImage(bg,0,0,null);
+                if (pete == null) {
+                    try {
+                        pete = ImageIO.read(new File("bin/Character Select/Character Sprites/Purdue_Pete_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (hawkeye == null) {
+                    try {
+                        hawkeye = ImageIO.read(new File("bin/Character Select/Character Sprites/Herky_Hawk_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (badger == null) {
+                    try {
+                        badger = ImageIO.read(new File("bin/Character Select/Character Sprites/Badgy_Badger_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (gopher == null) {
+                    try {
+                        gopher = ImageIO.read(new File("bin/Character Select/Character Sprites/Goldy_Gopher_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (buckeye == null) {
+                    try {
+                        buckeye = ImageIO.read(new File("bin/Character Select/Character Sprites/Brutus_Buckeye_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (sparky == null) {
+                    try {
+                        sparky = ImageIO.read(new File("bin/Character Select/Character Sprites/MSU_Sparty_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (wolverine == null) {
+                    try {
+                        wolverine = ImageIO.read(new File("bin/Character Select/Character Sprites/Michigan_Wolverine_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (hoosier == null) {
+                    try {
+                        hoosier = ImageIO.read(new File("bin/Character Select/Character Sprites/IU_Hoosier_Small.png"));
+                    } catch (IOException e) {
+                        System.out.println("Stack Error");
+                    }
+                }
+                if (playerNumber == 2) {
+                    if (player1Select == 0) {
+                        g.drawImage(pete,313,671,null);
+                    } else if (player1Select == 1) {
+                        g.drawImage(hawkeye,313,696,null);
+                    } else if (player1Select == 4) {
+                        g.drawImage(buckeye,303,669,null);
+                    } else if (player1Select == 3) {
+                        g.drawImage(hoosier,352,662,null);
+                    } else if (player1Select == 2) {
+                        g.drawImage(badger,321,674,null);
+                    } else if (player1Select == 5) {
+                        g.drawImage(sparky,333,667,null);
+                    } else if (player1Select == 6) {
+                        g.drawImage(wolverine,326,671,null);
+                    } else if (player1Select == 7) {
+                        g.drawImage(gopher,337,673,null);
+                    }
+                }
                 if (purdue == null) {
                     purdue = new Color(63,188,239);
                     iowa = new Color(63,188,239);
@@ -70,6 +155,14 @@ public class CharacterSelect {
                 g.fillRect(575,357,180,180);
                 g.setColor(indiana);
                 g.fillRect(804,357,180,180);
+                g.drawImage(pete,130,112,null);
+                g.drawImage(hawkeye,352,136,null);
+                g.drawImage(badger,580,114,null);
+                g.drawImage(gopher,809,114,null);
+                g.drawImage(buckeye,123,366,null);
+                g.drawImage(sparky,359,367,null);
+                g.drawImage(wolverine,579,371,null);
+                g.drawImage(hoosier,824,362,null);
             }
         };
         player1.setSize(1550,838);
