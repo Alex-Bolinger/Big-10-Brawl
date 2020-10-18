@@ -36,16 +36,6 @@ public class Game {
                 if (bg == null) {
                     try {
                         bg = ImageIO.read(new File("bin/FOOTBALL_STAGE.png"));
-                        System.out.println("bin/Characters/" +
-                                Character.getCharacterName(player1.getCharacter()) + "/" +
-                                Character.getCharacterName(player1.getCharacter()) + "_" +
-                                player1.getFacing() +
-                                player1.getMoveState() + ".png");
-                        System.out.println("bin/Characters/" +
-                                Character.getCharacterName(player2.getCharacter()) + "/" +
-                                Character.getCharacterName(player2.getCharacter()) + "_" +
-                                player2.getFacing() +
-                                player2.getMoveState() +".png");
                         sprite1 = ImageIO.read(new File("bin/Characters/" +
                                 Character.getCharacterName(player1.getCharacter()) + "/" +
                                 Character.getCharacterName(player1.getCharacter()) + "_" +
@@ -317,17 +307,6 @@ public class Game {
                         }
                     }
                     player.setMoveState("SP");
-                    System.out.println("bin/Characters/" +
-                            Character.getCharacterName(player1.getCharacter()) + "/" +
-                            Character.getCharacterName(player1.getCharacter()) + "_" +
-                            player1.getFacing() +
-                            player1.getMoveState() + ".png");
-                    System.out.println("bin/Characters/" +
-                            Character.getCharacterName(player2.getCharacter()) + "/" +
-                            Character.getCharacterName(player2.getCharacter()) + "_" +
-                            player2.getFacing() +
-                            player2.getMoveState() +".png");
-
                 }
             }
         } else {
