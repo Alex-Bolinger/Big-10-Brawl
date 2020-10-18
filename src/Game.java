@@ -7,7 +7,6 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLOutput;
 
 public class Game {
     private JFrame game;
@@ -19,6 +18,11 @@ public class Game {
     private BufferedImage sprite2;
 
     private Timer frameUpdate;
+
+    private boolean oscillating1;
+    private int counter1;
+    private boolean oscillating2;
+    private int counter2;
 
     public Game(Player player1, Player player2) {
         game = new JFrame();
@@ -54,12 +58,20 @@ public class Game {
         player2.setFacing("L");
         player1.setMoveState("I");
         player2.setMoveState("I");
+        oscillating1 = false;
+        counter1 = 0;
+        oscillating2 = false;
+        counter2 = 0;
         game.setSize(1550,838);
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.add(gComp);
         game.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
                 if (e.getKeyChar() == 'w') {
                     if (player1.getLocation().y == 250) {
                         jump(player1);
@@ -68,10 +80,14 @@ public class Game {
                 }
                 if (e.getKeyChar() == 'a') {
                     player1.setFacing("L");
+                    player1.sethVelocity(player1.getSpeed() * -1 / 8);
+                    oscillating1 = true;
                 }
 
                 if (e.getKeyChar() == 'd') {
                     player1.setFacing("R");
+                    player1.sethVelocity(player1.getSpeed() / 8);
+                    oscillating1 = true;
                 }
 
                 if (e.getKeyChar() == 'i') {
@@ -82,21 +98,45 @@ public class Game {
 
                 if (e.getKeyChar() == 'l') {
                     player2.setFacing("R");
+                    player2.sethVelocity(player2.getSpeed() / 4);
+                    oscillating2 = true;
                 }
 
                 if (e.getKeyChar() == 'j') {
                     player2.setFacing("L");
+                    player2.sethVelocity(player2.getSpeed() * -1 / 4);
+                    oscillating2 = true;
                 }
             }
 
             @Override
-            public void keyPressed(KeyEvent e) {
-
-            }
-
-            @Override
             public void keyReleased(KeyEvent e) {
+                if (e.getKeyChar() == 'a') {
+                    player1.sethVelocity(0);
+                    oscillating1 = false;
+                    player1.setMoveState("I");
+                    counter1 = 0;
+                }
 
+                if (e.getKeyChar() == 'd') {
+                    player1.sethVelocity(0);
+                    oscillating1 = false;
+                    player1.setMoveState("I");
+                    counter1 = 0;
+                }
+                if (e.getKeyChar() == 'l') {
+                    player2.sethVelocity(0);
+                    oscillating2 = false;
+                    player2.setMoveState("I");
+                    counter2 = 0;
+                }
+
+                if (e.getKeyChar() == 'j') {
+                    player2.sethVelocity(0);
+                    oscillating2 = false;
+                    player2.setMoveState("I");
+                    counter2 = 0;
+                }
             }
         });
         game.setVisible(true);
@@ -109,6 +149,10 @@ public class Game {
                 accelerate(player2);
                 changeY(player1);
                 changeY(player2);
+                changeX(player1);
+                changeX(player2);
+                oscillate1();
+                oscillate2();
                 updateSprites();
             }
         });
@@ -132,12 +176,40 @@ public class Game {
         }
     }
 
+    public void oscillate1() {
+       if (oscillating1) {
+           counter1++;
+           if (counter1 == 5) {
+               if (player1.getMoveState().equals("I")) {
+                   player1.setMoveState("M");
+               } else {
+                   player1.setMoveState("I");
+               }
+               counter1 = 0;
+           }
+       }
+    }
+
+    public void oscillate2() {
+        if (oscillating2) {
+            counter2++;
+            if (counter2 == 5) {
+                if (player2.getMoveState().equals("I")) {
+                    player2.setMoveState("M");
+                } else {
+                    player2.setMoveState("I");
+                }
+                counter2 = 0;
+            }
+        }
+    }
+
     public void changeX(Player player) {
         player.setLocation(new Point(player.getLocation().x + player.gethVelocity(), player.getLocation().y));
     }
 
     public void jump(Player player) {
-        player.setVelocity(player.getSpeed() / 5);
+        player.setVelocity(player.getSpeed() / 4);
     }
 
     public void accelerate(Player player) {
@@ -146,14 +218,10 @@ public class Game {
             player.setLocation(new Point(player.getLocation().x, 250));
             System.out.println("set to 0");
         } else {
-            player.setVelocity(player.getVelocity() - 1);
+            player.setVelocity(player.getVelocity() - 2);
         }
     }
     public void changeY(Player player) {
         player.setLocation(new Point(player.getLocation().x, player.getLocation().y - player.getVelocity()));
-    }
-
-    public void turnAround(Player player) {
-
     }
 }
