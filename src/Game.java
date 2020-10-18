@@ -65,6 +65,26 @@ public class Game {
                     System.out.println('w');
                     System.out.println(player1.getVelocity());
                 }
+
+                if (e.getKeyChar() == 'a') {
+                    player1.setFacing("L");
+                }
+
+                if (e.getKeyChar() == 'd') {
+                    player1.setFacing("R");
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    jump(player2);
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    player2.setFacing("R");
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    player2.setFacing("L");
+                }
             }
 
             @Override
@@ -107,5 +127,9 @@ public class Game {
     }
     public void changeY(Player player) {
         player.setLocation(new Point(player.getLocation().x, player.getLocation().y - player.getVelocity()));
+    }
+
+    public void turnAround(Player player) {
+
     }
 }
