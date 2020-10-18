@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class CharacterSelect {
-    private JFrame player1;
-    private JComponent p1Comp;
+    private JFrame player;
+    private JComponent pComp;
 
     private Color startColor;
     private Color startTextColor;
@@ -18,11 +18,9 @@ public class CharacterSelect {
     private Color joinTextColor;
 
     public CharacterSelect() {
-        player1 = new JFrame();
-        p1Comp = new JComponent() {
+        player = new JFrame();
+        pComp = new JComponent() {
             private BufferedImage bg;
-
-
 
             public void paint(Graphics g) {
                 //draw background here
@@ -38,42 +36,68 @@ public class CharacterSelect {
                     startColor = new Color(63,188,239);
                 }
                 g.setColor(startColor);
-                g.fillRect(116,96,180,180);
+                g.fillRect(117,98,180,180);
+                g.fillRect(346,98,180,180);
+                g.fillRect(575,98,180,180);
+                g.fillRect(804,98,180,180);
+                g.fillRect(117,357,180,180);
+                g.fillRect(346,357,180,180);
+                g.fillRect(575,357,180,180);
+                g.fillRect(804,357,180,180);
             }
         };
     }
-    public void initFrame() {
-        player1.setSize(1550,838);
-        player1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        player1.setTitle("Character Select");
-        player1.add(p1Comp);
-        player1.addKeyListener(new KeyListener() {
 
+    //return the int value of the player
+    //use the selection in mouseReleased to determine which character was selected
+    //dont hardcode the integers, use Character.<character_name>
+    public int initFrame() {
+        player.setSize(1550,838);
+        player.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        player.setTitle("Character Select");
+        player.add(pComp);
+        player.addMouseListener(new MouseListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void mouseClicked(MouseEvent e) {
 
             }
 
             @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.equals("d") || e.equals("D")) {
-
-                } else if (e.equals("a") || e.equals("A")) {
-
-                } else if (e.equals("w") || e.equals("W")) {
-
-                } else if (e.equals("s") || e.equals("S")) {
-
+            public void mousePressed(MouseEvent e) {
+                if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
+                    changeButtonColor();
                 }
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void mouseReleased(MouseEvent e) {
+                if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
+                    changeButtonColor();
+                }
+            }
+            //when you fix the button selection to check for each button
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
             }
         });
-
-        player1.setVisible(true);
-
+        player.setVisible(true);
     }
+
+    public void changeButtonColor() {
+        if (startColor.equals(new Color(63,188,239))) {
+            startColor = new Color(255,255,255);
+        } else {
+            startColor = new Color(63,188,239);
+        }
+        player.repaint();
+    }
+
+
 }
 

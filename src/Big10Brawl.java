@@ -25,6 +25,9 @@ public class Big10Brawl {
     private JFrame playerSelect;
     private JComponent welComp;
 
+    private Player player1;
+    private Player player2;
+
     private Color startColor;
     private Color startTextColor;
 
@@ -50,10 +53,10 @@ public class Big10Brawl {
                     startTextColor = new Color(255,255,255);
                 }
                 g.setColor(startColor);
-                g.fillRect(637,645,276,111);
+                g.fillRect(637,646,276,111);
                 g.setFont(new Font(Font.SERIF,Font.BOLD,40));
                 g.setColor(startTextColor);
-                g.drawString("Start", 570, 710);
+                g.drawString("Start", 730, 710);
 
             }
         };
@@ -72,15 +75,16 @@ public class Big10Brawl {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
+                if (e.getX() >= 637 && e.getX() <= 913 && e.getY() >= 646 && e.getY() <= 757) {
                     changeStartColor();
                 }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
+                if (e.getX() >= 637 && e.getX() <= 913 && e.getY() >= 646 && e.getY() <= 757) {
                     changeStartColor();
+                    startSelectionScreen();
                 }
             }
 
@@ -112,6 +116,13 @@ public class Big10Brawl {
     }
 
     public void startSelectionScreen() {
+        CharacterSelect cs1 = new CharacterSelect();
+        player1 = new Player(cs1.initFrame());
+        CharacterSelect cs2 = new CharacterSelect();
+        player2 = new Player(cs2.initFrame());
+    }
+
+    public void startGame() {
 
     }
 }

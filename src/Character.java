@@ -11,12 +11,18 @@ public class Character {
 
     public static int getSpeed(int character) {
         switch (character) {
-            case  1, 2, 4, 5, 6, 7:
+            case 1 :
+            case 2 :
+            case 4 :
+            case 5 :
+            case 6 :
+            case 7 :
                 return 100;
+
             case 0:
                 return 150;
             case 3:
-                return 1;
+                return 10;
             default:
                 System.out.println("Please select a valid character.");
                 return -1;
@@ -26,7 +32,12 @@ public class Character {
     public static int getHealth(int character) {
 
             switch (character) {
-                case 1, 2, 4, 5, 6, 7:
+                case 1 :
+                case 2 :
+                case 4 :
+                case 5 :
+                case 6 :
+                case 7 :
                     return 100;
                 case 0:
                     return 200;
@@ -38,9 +49,16 @@ public class Character {
             }
     }
 
-    public static int getCharge(int character) {
+    public static int getMaxCharge(int character) {
         switch (character) {
-            case 0, 1, 2, 3, 4, 5, 6, 7:
+            case 0 :
+            case 1 :
+            case 2 :
+            case 3 :
+            case 4 :
+            case 5 :
+            case 6 :
+            case 7 :
                 return 100;
             default:
                 System.out.println("Please select a valid character.");

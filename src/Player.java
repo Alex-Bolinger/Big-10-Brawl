@@ -2,11 +2,13 @@ public class Player {
     private int health;
     private int charge;
     private int points;
+    private int character;
 
-    public Player() {
+    public Player(int character) {
         health = 100;
         charge = 100;
         points = 0;
+        this.character = character;
     }
 
     public int getHealth() {
@@ -31,5 +33,9 @@ public class Player {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public int getCharacter() {
+        return character;
     }
 }
