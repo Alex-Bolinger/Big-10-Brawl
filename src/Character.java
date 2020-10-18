@@ -42,7 +42,7 @@ public class Character {
                 case 0:
                     return 200;
                 case 3:
-                    return 1;
+                    return 30;
                 default:
                     System.out.println("Please select a valid character.");
                     return -1;
