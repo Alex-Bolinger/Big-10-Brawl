@@ -89,7 +89,7 @@ public class Character {
     public static int getPunchDamage(int character) {
         int damage = 0;
         if (character == 0) {
-            damage = 4;
+            damage = 7;
         } else if (character == 1) {
             damage = 4;
         } else if (character == 2) {
@@ -111,7 +111,7 @@ public class Character {
     public static int getKickDamage(int character) {
         int damage = 0;
         if (character == 0) {
-            damage = 8;
+            damage = 15;
         } else if (character == 1) {
             damage = 8;
         } else if (character == 2) {
