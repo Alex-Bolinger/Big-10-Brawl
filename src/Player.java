@@ -1,8 +1,12 @@
+import java.awt.*;
+
 public class Player {
     private int health;
     private int charge;
     private int points;
     private int character;
+    private Point location;
+
 
     public Player(int character) {
         health = 100;
@@ -37,5 +41,13 @@ public class Player {
 
     public int getCharacter() {
         return character;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    public Point getLocation() {
+        return location;
     }
 }
