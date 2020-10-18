@@ -107,6 +107,24 @@ public class Game {
                     player2.sethVelocity(player2.getSpeed() * -1 / 4);
                     oscillating2 = true;
                 }
+
+                if (e.getKeyChar() == 'q') {
+                    player1.setMoveState("P");
+                } //punch animation player 1
+
+                if (e.getKeyChar() == 'u') {
+                    player2.setMoveState("P");
+                } //punch animation player 2
+
+                //need to make kicks slower but more powerful, but I'm too tired rn to do that.
+                if (e.getKeyChar() == 'e') {
+                    player1.setMoveState("K");
+                } //kick animation player 1
+
+
+                if (e.getKeyChar() == 'o') {
+                    player2.setMoveState("K");
+                } //kick animation player 2
             }
 
             @Override
@@ -136,6 +154,22 @@ public class Game {
                     oscillating2 = false;
                     player2.setMoveState("I");
                     counter2 = 0;
+                }
+
+                if (e.getKeyChar() == 'q') {
+                    player1.setMoveState("I");
+                }
+
+                if (e.getKeyChar() == 'u') {
+                    player2.setMoveState("I");
+                }
+
+                if (e.getKeyChar() == 'e') {
+                    player1.setMoveState("I");
+                }
+
+                if (e.getKeyChar() == 'o') {
+                    player2.setMoveState("I");
                 }
             }
         });
