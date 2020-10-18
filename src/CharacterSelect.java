@@ -127,7 +127,7 @@ public class CharacterSelect {
                     } else if (player1Select == 1) {
                         g.drawImage(blueSquare,486,122,null);
                     } else if (player1Select == 4) {
-                        g.drawImage(buckeye,181,466,null);
+                        g.drawImage(blueSquare,181,466,null);
                     } else if (player1Select == 3) {
                         g.drawImage(blueSquare,1099,466,null);
                     } else if (player1Select == 2) {
