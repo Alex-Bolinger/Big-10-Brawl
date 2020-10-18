@@ -117,6 +117,12 @@ public class Big10Brawl {
 
     public void startSelectionScreen() {
         CharacterSelect cs1 = new CharacterSelect();
-        cs1.initFrame();
+        player1 = new Player(cs1.initFrame());
+        CharacterSelect cs2 = new CharacterSelect();
+        player2 = new Player(cs2.initFrame());
+    }
+
+    public void startGame() {
+
     }
 }

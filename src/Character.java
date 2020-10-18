@@ -22,7 +22,7 @@ public class Character {
             case 0:
                 return 150;
             case 3:
-                return 1;
+                return 10;
             default:
                 System.out.println("Please select a valid character.");
                 return -1;
@@ -49,7 +49,7 @@ public class Character {
             }
     }
 
-    public static int getCharge(int character) {
+    public static int getMaxCharge(int character) {
         switch (character) {
             case 0 :
             case 1 :
