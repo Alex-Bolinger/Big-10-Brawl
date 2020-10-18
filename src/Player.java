@@ -5,12 +5,14 @@ public class Player {
     private int charge;
     private int points;
     private int character;
+    private int speed;
     private Point location;
 
 
     public Player(int character) {
-        health = 100;
-        charge = 100;
+        health = Character.getHealth(character);
+        charge = Character.getMaxCharge(character);
+        speed = Character.getSpeed(character);
         points = 0;
         this.character = character;
     }
