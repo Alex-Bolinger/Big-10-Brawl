@@ -22,11 +22,12 @@ public class CharacterSelect {
     private Color indiana;
 
     private int characterValue;
-    private int playerNumber;
+
+    public boolean finished;
 
 
     public CharacterSelect(int playerNumber) {
-        this.playerNumber = playerNumber;
+        finished = false;
         player1 = new JFrame();
         p1Comp = new JComponent() {
             private BufferedImage bg;
@@ -71,6 +72,12 @@ public class CharacterSelect {
                 g.fillRect(804,357,180,180);
             }
         };
+        player1.setSize(1550,838);
+        player1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        player1.setTitle("Character Select");
+        player1.add(p1Comp);
+        p1Comp.repaint();
+        player1.repaint();
     }
 
     //return the int value of the player
@@ -78,10 +85,7 @@ public class CharacterSelect {
     //dont hardcode the integers, use Character.<character_name>
 
     public int initFrame() {
-        player1.setSize(1550,838);
-        player1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        player1.setTitle("Character Select");
-        player1.add(p1Comp);
+        player1.setVisible(true);
         player1.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -121,20 +125,28 @@ public class CharacterSelect {
             public void mouseReleased(MouseEvent e) {
                 if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 111 && e.getY() <= 310) {
                     changePurdueButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 111 && e.getY() <= 310) {
                     changeIowaButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 111 && e.getY() <= 310) {
                     changeWisconsinButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 111 && e.getY() < 310) {
                     changeMinnesotaButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 369 && e.getY() <= 568) {
                     changeOSUButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 369 && e.getY() <= 568) {
                     changeMSUButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 369 && e.getY() <= 568) {
                     changeMichiganButtonColor();
+                    finished = true;
                 } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 369 && e.getY() <= 568) {
                     changeIndianaButtonColor();
+                    finished = true;
                 }
             }
 
@@ -148,8 +160,12 @@ public class CharacterSelect {
 
             }
         });
-        player1.setVisible(true);
+
         return characterValue;
+    }
+
+    public void close() {
+        player1.setVisible(false);
     }
 
     public void changePurdueButtonColor() {
