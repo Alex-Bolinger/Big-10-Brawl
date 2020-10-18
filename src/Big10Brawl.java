@@ -25,6 +25,9 @@ public class Big10Brawl {
     private JFrame playerSelect;
     private JComponent welComp;
 
+    private Player player1;
+    private Player player2;
+
     private Color startColor;
     private Color startTextColor;
 
