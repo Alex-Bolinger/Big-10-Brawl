@@ -36,14 +36,14 @@ public class CharacterSelect {
                     startColor = new Color(63,188,239);
                 }
                 g.setColor(startColor);
-                g.fillRect(119,100,180,180);
-                g.fillRect(348,100,180,180);
-                g.fillRect(577,100,180,180);
-                g.fillRect(806,100,180,180);
-                g.fillRect(119,539,180,180);
-                g.fillRect(348,539,180,180);
-                g.fillRect(577,539,180,180);
-                g.fillRect(806,539,180,180);
+                g.fillRect(117,98,180,180);
+                g.fillRect(346,98,180,180);
+                g.fillRect(575,98,180,180);
+                g.fillRect(804,98,180,180);
+                g.fillRect(117,357,180,180);
+                g.fillRect(346,357,180,180);
+                g.fillRect(575,357,180,180);
+                g.fillRect(804,357,180,180);
             }
         };
     }
@@ -89,7 +89,7 @@ public class CharacterSelect {
         if (startColor.equals(new Color(63,188,239))) {
             startColor = new Color(255,255,255);
         } else {
-            startColor = new Color(63,255,239);
+            startColor = new Color(63,188,239);
         }
         player1.repaint();
     }
