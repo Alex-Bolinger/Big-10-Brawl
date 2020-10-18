@@ -84,7 +84,7 @@ public class CharacterSelect {
     //use the selection in mouseReleased to determine which character was selected
     //dont hardcode the integers, use Character.<character_name>
 
-    public int initFrame() {
+    public void initFrame() {
         player1.setVisible(true);
         player1.addMouseListener(new MouseListener() {
             @Override
@@ -160,12 +160,14 @@ public class CharacterSelect {
 
             }
         });
-
-        return characterValue;
     }
 
     public void close() {
         player1.setVisible(false);
+    }
+
+    public int getCharacterValue() {
+        return characterValue;
     }
 
     public void changePurdueButtonColor() {
