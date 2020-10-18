@@ -24,6 +24,11 @@ public class Game {
     private boolean oscillating2;
     private int counter2;
 
+    private int kCounter;
+
+    private int sCounter;
+
+
     public Game(Player player1, Player player2) {
         game = new JFrame();
         gComp = new JComponent() {
@@ -31,6 +36,16 @@ public class Game {
                 if (bg == null) {
                     try {
                         bg = ImageIO.read(new File("bin/FOOTBALL_STAGE.png"));
+                        System.out.println("bin/Characters/" +
+                                Character.getCharacterName(player1.getCharacter()) + "/" +
+                                Character.getCharacterName(player1.getCharacter()) + "_" +
+                                player1.getFacing() +
+                                player1.getMoveState() + ".png");
+                        System.out.println("bin/Characters/" +
+                                Character.getCharacterName(player2.getCharacter()) + "/" +
+                                Character.getCharacterName(player2.getCharacter()) + "_" +
+                                player2.getFacing() +
+                                player2.getMoveState() +".png");
                         sprite1 = ImageIO.read(new File("bin/Characters/" +
                                 Character.getCharacterName(player1.getCharacter()) + "/" +
                                 Character.getCharacterName(player1.getCharacter()) + "_" +
@@ -48,6 +63,12 @@ public class Game {
                 g.drawImage(bg,0,0,null);
                 g.drawImage(sprite1,player1.getLocation().x,player1.getLocation().y,null);
                 g.drawImage(sprite2,player2.getLocation().x,player2.getLocation().y,null);
+                g.setColor(Color.RED);
+                g.fillRect(0,0,775 * player1.getHealth() / Character.getHealth(player1.getCharacter()), 50);
+                g.fillRect(1550 - 775 * player2.getHealth() / Character.getHealth(player2.getCharacter()), 0, 775 * player2.getHealth() / Character.getHealth(player2.getCharacter()), 50);
+                g.setColor(Color.blue);
+                g.fillRect(0,50,775 * player1.getCharge() / Character.getMaxCharge(player1.getCharacter()), 50);
+                g.fillRect(1550 - 775 * player2.getCharge() / Character.getMaxCharge(player2.getCharacter()), 50, 775 * player2.getCharge() / Character.getMaxCharge(player2.getCharacter()), 50);
             }
         };
         this.player1 = player1;
@@ -62,6 +83,12 @@ public class Game {
         counter1 = 0;
         oscillating2 = false;
         counter2 = 0;
+        player1.setKicking(false);
+        player2.setKicking(false);
+        player1.setDoingSpecial(false);
+        player2.setDoingSpecial(false);
+        kCounter = 0;
+        sCounter = 0;
         game.setSize(1550,838);
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.add(gComp);
@@ -109,22 +136,30 @@ public class Game {
                 }
 
                 if (e.getKeyChar() == 'q') {
-                    player1.setMoveState("P");
+                    punch(player1, player2);
                 } //punch animation player 1
 
                 if (e.getKeyChar() == 'u') {
-                    player2.setMoveState("P");
+                    punch(player2, player1);
                 } //punch animation player 2
 
                 //need to make kicks slower but more powerful, but I'm too tired rn to do that.
                 if (e.getKeyChar() == 'e') {
-                    player1.setMoveState("K");
+                    player1.setKicking(true);
                 } //kick animation player 1
 
 
                 if (e.getKeyChar() == 'o') {
-                    player2.setMoveState("K");
+                    player2.setKicking(true);
                 } //kick animation player 2
+
+                if (e.getKeyChar() == 'r') {
+                    player1.setDoingSpecial(true);
+                }
+
+                if(e.getKeyChar() == 'p') {
+                    player2.setDoingSpecial(true);
+                }
             }
 
             @Override
@@ -187,10 +222,117 @@ public class Game {
                 changeX(player2);
                 oscillate1();
                 oscillate2();
+                kick(player1,player2);
+                kick(player2,player1);
+                special(player1, player2);
+                special(player2,player1);
+                if (player1.getCharge() < Character.getMaxCharge(player1.getCharacter())) {
+                    player1.setCharge(player1.getCharge() + 1);
+                }
+                if (player2.getCharge() < Character.getMaxCharge(player2.getCharacter())) {
+                    player2.setCharge(player2.getCharge() + 1);
+                }
                 updateSprites();
             }
         });
         frameUpdate.start();
+    }
+
+    public void kick(Player player, Player otherPlayer) {
+        if (player.isKicking()) {
+            kCounter++;
+            if (kCounter == 5) {
+                player.setKicking(false);
+                kCounter = 0;
+                if (player.getCharge() >= Character.getMaxCharge(player.getCharacter()) / 2) {
+                    player.setCharge(player.getCharge() - Character.getMaxCharge(player.getCharacter()) / 2);
+                    if (player.getFacing().equals("L")) {
+                        if (player.getLocation().x < otherPlayer.getLocation().x + 256 &&
+                                player.getLocation().x > otherPlayer.getLocation().x &&
+                                player.getLocation().y >= otherPlayer.getLocation().y &&
+                                player.getLocation().y < otherPlayer.getLocation().y + 512) {
+                            otherPlayer.setHealth(otherPlayer.getHealth() - Character.getKickDamage(player.getCharacter()));
+                        }
+                    }
+                    if (player.getFacing().equals("R"))
+                    {
+                        if (player.getLocation().x + 256 > otherPlayer.getLocation().x &&
+                                player.getLocation().x < otherPlayer.getLocation().x &&
+                                player.getLocation().y >= otherPlayer.getLocation().y &&
+                                player.getLocation().y < otherPlayer.getLocation().y + 512) {
+                            otherPlayer.setHealth(otherPlayer.getHealth() - 5);
+                        }
+                    }
+                    player.setMoveState("K");
+                }
+            }
+        } else {
+            player.setKicking(false);
+        }
+    }
+
+    public void punch(Player player, Player otherPlayer) {
+        if (player.getCharge() >= Character.getMaxCharge(player.getCharacter()) / 4) {
+            player.setCharge(player.getCharge() - Character.getMaxCharge(player.getCharacter()) / 4);
+            if (player.getFacing().equals("L")) {
+                if (player.getLocation().x < otherPlayer.getLocation().x + 256 &&
+                        player.getLocation().x > otherPlayer.getLocation().x &&
+                        player.getLocation().y >= otherPlayer.getLocation().y &&
+                        player.getLocation().y < otherPlayer.getLocation().y + 512) {
+                    otherPlayer.setHealth(otherPlayer.getHealth() - Character.getPunchDamage(player.getCharacter()));
+                }
+            }
+            if (player.getFacing().equals("R"))
+            {
+                if (player.getLocation().x + 256 > otherPlayer.getLocation().x &&
+                        player.getLocation().x < otherPlayer.getLocation().x &&
+                        player.getLocation().y >= otherPlayer.getLocation().y &&
+                        player.getLocation().y < otherPlayer.getLocation().y + 512) {
+                    otherPlayer.setHealth(otherPlayer.getHealth() - Character.getPunchDamage(player.getCharacter()));
+                }
+            }
+            player.setMoveState("P");
+        }
+    }
+
+    public void special(Player player, Player otherPlayer) {
+        if (player.getCharge() == Character.getMaxCharge(player.getCharacter())) {
+            if (player.isDoingSpecial()) {
+                sCounter++;
+                System.out.println(sCounter);
+                if (sCounter == 10) {
+                    player.setCharge(0);
+                    player.setDoingSpecial(false);
+                    sCounter = 0;
+                    if (player.getFacing().equals("L")) {
+                        if (player.getLocation().x > otherPlayer.getLocation().x) {
+                            otherPlayer.setHealth(otherPlayer.getHealth() - Character.getSpecialDamage(player.getCharacter()));
+                            System.out.println("L");
+                        }
+                    }
+                    if (player.getFacing().equals("R")) {
+                        if (player.getLocation().x < otherPlayer.getLocation().x) {
+                            otherPlayer.setHealth(otherPlayer.getHealth() - Character.getSpecialDamage(player.getCharacter()));
+                            System.out.println("R");
+                        }
+                    }
+                    player.setMoveState("SP");
+                    System.out.println("bin/Characters/" +
+                            Character.getCharacterName(player1.getCharacter()) + "/" +
+                            Character.getCharacterName(player1.getCharacter()) + "_" +
+                            player1.getFacing() +
+                            player1.getMoveState() + ".png");
+                    System.out.println("bin/Characters/" +
+                            Character.getCharacterName(player2.getCharacter()) + "/" +
+                            Character.getCharacterName(player2.getCharacter()) + "_" +
+                            player2.getFacing() +
+                            player2.getMoveState() +".png");
+
+                }
+            }
+        } else {
+            player.setDoingSpecial(false);
+        }
     }
 
     public void updateSprites() {
