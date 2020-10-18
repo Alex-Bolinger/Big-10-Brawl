@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class CharacterSelect {
-    private JFrame player1;
-    private JComponent p1Comp;
+    private JFrame player;
+    private JComponent pComp;
 
     private Color startColor;
     private Color startTextColor;
@@ -18,8 +18,8 @@ public class CharacterSelect {
     private Color joinTextColor;
 
     public CharacterSelect() {
-        player1 = new JFrame();
-        p1Comp = new JComponent() {
+        player = new JFrame();
+        pComp = new JComponent() {
             private BufferedImage bg;
 
             public void paint(Graphics g) {
@@ -47,12 +47,16 @@ public class CharacterSelect {
             }
         };
     }
-    public void initFrame() {
-        player1.setSize(1550,838);
-        player1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        player1.setTitle("Character Select");
-        player1.add(p1Comp);
-        player1.addMouseListener(new MouseListener() {
+
+    //return the int value of the player
+    //use the selection in mouseReleased to determine which character was selected
+    //dont hardcode the integers, use Character.<character_name>
+    public int initFrame() {
+        player.setSize(1550,838);
+        player.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        player.setTitle("Character Select");
+        player.add(pComp);
+        player.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
@@ -71,7 +75,7 @@ public class CharacterSelect {
                     changeButtonColor();
                 }
             }
-
+            //when you fix the button selection to check for each button
             @Override
             public void mouseEntered(MouseEvent e) {
 
@@ -82,7 +86,7 @@ public class CharacterSelect {
 
             }
         });
-        player1.setVisible(true);
+        player.setVisible(true);
     }
 
     public void changeButtonColor() {
@@ -91,7 +95,9 @@ public class CharacterSelect {
         } else {
             startColor = new Color(63,188,239);
         }
-        player1.repaint();
+        player.repaint();
     }
+
+
 }
 
