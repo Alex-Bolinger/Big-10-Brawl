@@ -103,13 +103,13 @@ public class Game {
                 }
                 if (e.getKeyChar() == 'a') {
                     player1.setFacing("L");
-                    player1.sethVelocity(player1.getSpeed() * -1 / 8);
+                    player1.sethVelocity(player1.getSpeed() * -1 / 4);
                     oscillating1 = true;
                 }
 
                 if (e.getKeyChar() == 'd') {
                     player1.setFacing("R");
-                    player1.sethVelocity(player1.getSpeed() / 8);
+                    player1.sethVelocity(player1.getSpeed() / 4);
                     oscillating1 = true;
                 }
 
