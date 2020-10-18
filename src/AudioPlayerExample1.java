@@ -45,7 +45,7 @@ public class AudioPlayerExample1 implements LineListener {
 
             audioClip.open(audioStream);
 
-            audioClip.loop(10);
+            audioClip.loop(50);
 
             audioClip.start();
 
