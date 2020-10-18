@@ -59,7 +59,7 @@ public class Character {
             case 5 :
             case 6 :
             case 7 :
-                return 100;
+                return 300;
             default:
                 System.out.println("Please select a valid character.");
                 return -1;
