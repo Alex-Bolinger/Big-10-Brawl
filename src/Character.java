@@ -1,11 +1,11 @@
 public class Character {
 
     public final static int PURDUE_PETE = 0;
-    public final static int HERKY_THE_HAWKEYE = 1;
-    public final static int BUCKY_THE_BADGER = 2;
+    public final static int HERKY_THE_HAWK = 1;
+    public final static int BUCKY_BADGER = 2;
     public final static int HOOSIER = 3;
-    public final static int BRUTUS_THE_BUCKEYE = 4;
-    public final static int SPARTY_THE_SPARTAN = 5;
+    public final static int BRUTUS_BUCKEYE = 4;
+    public final static int SPARTY = 5;
     public final static int WOLVERINE = 6;
     public final static int GOLDY_GOPHER = 7;
 
@@ -66,6 +66,24 @@ public class Character {
         }
     }
 
-
+    public static String getCharacterName(int character) {
+        if (character == 0) {
+            return "PURDUE_PETE";
+        } else if (character == 1) {
+            return "HERKY_THE_HAWK";
+        } else if (character == 2) {
+            return "BUCKY_BADGER";
+        } else if (character == 3) {
+            return "HOOSIER";
+        } else if (character == 4) {
+            return "BRUTUS_BUCKEYE";
+        } else if (character == 5) {
+            return "SPARTY";
+        } else if (character == 6) {
+            return "WOLVERINE";
+        } else {
+            return "GOLDY_GOPHER";
+        }
+    }
 
 }
