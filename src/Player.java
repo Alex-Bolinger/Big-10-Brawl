@@ -6,7 +6,10 @@ public class Player {
     private int points;
     private int character;
     private int speed;
+    private int velocity;
     private Point location;
+    private String facing;
+    private String moveState;
 
 
     public Player(int character) {
@@ -46,10 +49,50 @@ public class Player {
     }
 
     public void setLocation(Point location) {
-        this.location = location;
+        if (location.y > 350){
+            this.location = location;
+        } else {
+            this.location = new Point(location.x, 350);
+        }
     }
 
     public Point getLocation() {
         return location;
+    }
+
+    public String getFacing() {
+        return facing;
+    }
+
+    public void setFacing(String facing) {
+        this.facing = facing;
+    }
+
+    public String getMoveState() {
+        return moveState;
+    }
+
+    public void setMoveState(String moveState) {
+        this.moveState = moveState;
+    }
+
+    public int getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(int velocity) {
+        if (getLocation().y > 350) {
+            this.velocity = velocity;
+        } else {
+            velocity = 0;
+        }
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }
