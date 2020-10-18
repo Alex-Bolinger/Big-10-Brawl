@@ -86,4 +86,69 @@ public class Character {
         }
     }
 
+    public static int getPunchDamage(int character) {
+        int damage = 0;
+        if (character == 0) {
+            damage = 4;
+        } else if (character == 1) {
+            damage = 4;
+        } else if (character == 2) {
+            damage = 4;
+        } else if (character == 3) {
+            damage = 2;
+        } else if (character == 4) {
+            damage = 4;
+        } else if (character == 5) {
+            damage = 4;
+        } else if (character == 6) {
+            damage = 4;
+        } else if (character== 7) {
+            damage = 4;
+        }
+        return damage;
+    }
+
+    public static int getKickDamage(int character) {
+        int damage = 0;
+        if (character == 0) {
+            damage = 8;
+        } else if (character == 1) {
+            damage = 8;
+        } else if (character == 2) {
+            damage = 8;
+        } else if (character == 3) {
+            damage = 4;
+        } else if (character == 4) {
+            damage = 8;
+        } else if (character == 5) {
+            damage = 8;
+        } else if (character == 6) {
+            damage = 8;
+        } else if (character== 7) {
+            damage = 8;
+        }
+        return damage;
+    }
+
+    public static int getSpecialDamage(int character) {
+        int damage = 0;
+        if (character == 0) {
+            damage = 15;
+        } else if (character == 1) {
+            damage = 15;
+        } else if (character == 2) {
+            damage = 15;
+        } else if (character == 3) {
+            damage = 5;
+        } else if (character == 4) {
+            damage = 15;
+        } else if (character == 5) {
+            damage = 15;
+        } else if (character == 6) {
+            damage = 15;
+        } else if (character== 7) {
+            damage = 15;
+        }
+        return damage;
+    }
 }
