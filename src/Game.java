@@ -239,16 +239,24 @@ public class Game {
         if (player1.getHealth() <= 0) {
             player2.setPoints(player2.getPoints() + 1);
             game.setVisible(false);
-            player1.setHealth(Character.getHealth(player1.getCharacter()));
-            player2.setHealth(Character.getHealth(player2.getCharacter()));
-            Game g = new Game(player1,player2);
+            if (player2.getPoints() == 2) {
+                System.exit(0);
+            } else {
+                player1.setHealth(Character.getHealth(player1.getCharacter()));
+                player2.setHealth(Character.getHealth(player2.getCharacter()));
+                Game g = new Game(player1, player2);
+            }
         }
         if (player2.getHealth() <= 0) {
-            player1.setPoints(player2.getPoints() + 1);
+            player1.setPoints(player1.getPoints() + 1);
             game.setVisible(false);
-            player1.setHealth(Character.getHealth(player1.getCharacter()));
-            player2.setHealth(Character.getHealth(player2.getCharacter()));
-            Game g = new Game(player1,player2);
+            if (player1.getPoints() == 2) {
+                System.exit(0);
+            } else {
+                player1.setHealth(Character.getHealth(player1.getCharacter()));
+                player2.setHealth(Character.getHealth(player2.getCharacter()));
+                Game g = new Game(player1, player2);
+            }
         }
     }
 
