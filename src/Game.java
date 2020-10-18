@@ -321,7 +321,6 @@ public class Game {
         if (player.getCharge() == Character.getMaxCharge(player.getCharacter())) {
             if (player.isDoingSpecial()) {
                 sCounter++;
-                System.out.println(sCounter);
                 if (sCounter == 10) {
                     player.setCharge(0);
                     player.setDoingSpecial(false);
@@ -329,13 +328,11 @@ public class Game {
                     if (player.getFacing().equals("L")) {
                         if (player.getLocation().x > otherPlayer.getLocation().x) {
                             otherPlayer.setHealth(otherPlayer.getHealth() - Character.getSpecialDamage(player.getCharacter()));
-                            System.out.println("L");
                         }
                     }
                     if (player.getFacing().equals("R")) {
                         if (player.getLocation().x < otherPlayer.getLocation().x) {
                             otherPlayer.setHealth(otherPlayer.getHealth() - Character.getSpecialDamage(player.getCharacter()));
-                            System.out.println("R");
                         }
                     }
                     player.setMoveState("SP");
