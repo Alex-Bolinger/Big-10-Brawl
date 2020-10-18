@@ -11,11 +11,13 @@ public class Player {
     private Point location;
     private String facing;
     private String moveState;
+    private boolean isKicking;
+    private boolean isDoingSpecial;
 
 
     public Player(int character) {
         health = Character.getHealth(character);
-        charge = Character.getMaxCharge(character);
+        charge = 0;
         speed = Character.getSpeed(character);
         points = 0;
         this.character = character;
@@ -99,5 +101,21 @@ public class Player {
 
     public void sethVelocity(int hVelocity) {
         this.hVelocity = hVelocity;
+    }
+
+    public boolean isDoingSpecial() {
+        return isDoingSpecial;
+    }
+
+    public void setDoingSpecial(boolean doingSpecial) {
+        isDoingSpecial = doingSpecial;
+    }
+
+    public boolean isKicking() {
+        return isKicking;
+    }
+
+    public void setKicking(boolean kicking) {
+        isKicking = kicking;
     }
 }
