@@ -36,9 +36,11 @@ public class CharacterSelect {
     public boolean finished;
 
 
-    public CharacterSelect(int playerNumber) {
+    public CharacterSelect(int playerNumber, int player1Select) {
         if (playerNumber == 1) {
-            player1Select = 0;
+            this.player1Select = 0;
+        } else {
+
         }
         finished = false;
         player1 = new JFrame();

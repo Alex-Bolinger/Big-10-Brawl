@@ -91,7 +91,6 @@ public class Big10Brawl {
             public void actionPerformed(ActionEvent e) {
                 if (cs1.finished) {
                     player1 = new Player(cs1.getCharacterValue());
-                    System.out.println(player1.getCharacter());
                     startSelectionScreen2();
                 }
             }
@@ -101,7 +100,6 @@ public class Big10Brawl {
             public void actionPerformed(ActionEvent e) {
                 if (cs2.finished) {
                     player2 = new Player(cs2.getCharacterValue());
-                    System.out.println(player2.getCharacter());
                     startGame();
                 }
             }
@@ -168,7 +166,7 @@ public class Big10Brawl {
     public void startSelectionScreen1() {
         checkStarted.stop();
         checkPlayer1Chosen.start();
-        cs1 = new CharacterSelect(1);
+        cs1 = new CharacterSelect(1, -1);
         cs1.initFrame();
     }
 
@@ -176,12 +174,13 @@ public class Big10Brawl {
         checkPlayer1Chosen.stop();
         cs1.close();
         checkPlayer2Chosen.start();
-        cs2 = new CharacterSelect(2);
+        cs2 = new CharacterSelect(2, player1.getCharacter());
         cs2.initFrame();
     }
 
     public void startGame() {
         checkPlayer2Chosen.stop();
         cs2.close();
+        Game g = new Game(player1,player2);
     }
 }
