@@ -81,6 +81,7 @@ public class Big10Brawl {
             public void mouseReleased(MouseEvent e) {
                 if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
                     changeStartColor();
+                    startSelectionScreen();
                 }
             }
 
