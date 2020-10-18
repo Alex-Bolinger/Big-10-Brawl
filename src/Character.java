@@ -38,7 +38,7 @@ public class Character {
                 case 5 :
                 case 6 :
                 case 7 :
-                    return 100;
+                    return 75;
                 case 0:
                     return 200;
                 case 3:

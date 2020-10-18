@@ -59,10 +59,16 @@ public class Game {
                 g.setColor(Color.blue);
                 g.fillRect(0,50,775 * player1.getCharge() / Character.getMaxCharge(player1.getCharacter()), 50);
                 g.fillRect(1550 - 775 * player2.getCharge() / Character.getMaxCharge(player2.getCharacter()), 50, 775 * player2.getCharge() / Character.getMaxCharge(player2.getCharacter()), 50);
+                g.setColor(Color.WHITE);
+                g.setFont(new Font(Font.SERIF,Font.BOLD,40));
+                g.drawString(Integer.toString(player1.getPoints()),100,150);
+                g.drawString(Integer.toString(player2.getPoints()),1450,150);
             }
         };
         this.player1 = player1;
         this.player2 = player2;
+        player1.setCharge(0);
+        player2.setCharge(0);
         player1.setLocation(new Point(100,250));
         player2.setLocation(new Point(1200, 250));
         player1.setFacing("R");
@@ -204,6 +210,7 @@ public class Game {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.repaint();
+                checkForWin();
                 accelerate(player1);
                 accelerate(player2);
                 changeY(player1);
@@ -226,6 +233,23 @@ public class Game {
             }
         });
         frameUpdate.start();
+    }
+
+    public void checkForWin() {
+        if (player1.getHealth() <= 0) {
+            player2.setPoints(player2.getPoints() + 1);
+            game.setVisible(false);
+            player1.setHealth(Character.getHealth(player1.getCharacter()));
+            player2.setHealth(Character.getHealth(player2.getCharacter()));
+            Game g = new Game(player1,player2);
+        }
+        if (player2.getHealth() <= 0) {
+            player1.setPoints(player2.getPoints() + 1);
+            game.setVisible(false);
+            player1.setHealth(Character.getHealth(player1.getCharacter()));
+            player2.setHealth(Character.getHealth(player2.getCharacter()));
+            Game g = new Game(player1,player2);
+        }
     }
 
     public void kick(Player player, Player otherPlayer) {
