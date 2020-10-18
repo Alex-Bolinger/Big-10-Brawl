@@ -74,7 +74,6 @@ public class Big10Brawl {
                 g.setFont(new Font(Font.SERIF,Font.BOLD,40));
                 g.setColor(startTextColor);
                 g.drawString("Start", 730, 710);
-
             }
         };
         started = false;
@@ -148,6 +147,8 @@ public class Big10Brawl {
         });
         checkStarted.start();
 
+        AudioPlayerExample1 ap = new AudioPlayerExample1();
+        ap.play("bin/LOOPED_SONG.wav");
     }
 
 
