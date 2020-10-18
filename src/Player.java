@@ -49,10 +49,10 @@ public class Player {
     }
 
     public void setLocation(Point location) {
-        if (location.y > 350){
+        if (location.y <= 250){
             this.location = location;
         } else {
-            this.location = new Point(location.x, 350);
+            this.location = new Point(location.x, 250);
         }
     }
 
@@ -81,11 +81,7 @@ public class Player {
     }
 
     public void setVelocity(int velocity) {
-        if (getLocation().y > 350) {
-            this.velocity = velocity;
-        } else {
-            velocity = 0;
-        }
+        this.velocity = velocity;
     }
 
     public int getSpeed() {

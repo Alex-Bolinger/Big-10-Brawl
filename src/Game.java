@@ -7,6 +7,7 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLOutput;
 
 public class Game {
     private JFrame game;
@@ -59,14 +60,16 @@ public class Game {
         game.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-
+                if (e.getKeyChar() == 'w') {
+                    jump(player1);
+                    System.out.println('w');
+                    System.out.println(player1.getVelocity());
+                }
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyChar() == 'w') {
-                    jump(player1);
-                }
+
             }
 
             @Override
@@ -90,17 +93,19 @@ public class Game {
     }
 
     public void jump(Player player) {
-        player.setVelocity(player.getSpeed() / 60);
+        player.setVelocity(player.getSpeed() / 6);
     }
 
     public void accelerate(Player player) {
-        if (player.getVelocity() < 0 && player.getLocation().y <= 350) {
+        if (player.getLocation().y > 250 && player.getVelocity() > 0) {
             player.setVelocity(0);
+            player.setLocation(new Point(player.getLocation().x, 250));
+            System.out.println("set to 0");
         } else {
-            player.setVelocity(player.getVelocity() - 100/60);
+            player.setVelocity(player.getVelocity() - 1);
         }
     }
     public void changeY(Player player) {
-        player.setLocation(new Point(player.getLocation().x, player.getLocation().y + player.getVelocity()));
+        player.setLocation(new Point(player.getLocation().x, player.getLocation().y - player.getVelocity()));
     }
 }
