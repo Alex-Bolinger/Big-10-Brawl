@@ -224,10 +224,10 @@ public class Game {
                 special(player1, player2);
                 special(player2,player1);
                 if (player1.getCharge() < Character.getMaxCharge(player1.getCharacter())) {
-                    player1.setCharge(player1.getCharge() + 1);
+                    player1.setCharge(player1.getCharge() + 2);
                 }
                 if (player2.getCharge() < Character.getMaxCharge(player2.getCharacter())) {
-                    player2.setCharge(player2.getCharge() + 1);
+                    player2.setCharge(player2.getCharge() + 2);
                 }
                 updateSprites();
             }
