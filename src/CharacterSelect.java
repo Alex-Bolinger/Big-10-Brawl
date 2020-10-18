@@ -22,8 +22,6 @@ public class CharacterSelect {
         p1Comp = new JComponent() {
             private BufferedImage bg;
 
-
-
             public void paint(Graphics g) {
                 //draw background here
                 if (bg == null) {
@@ -38,7 +36,14 @@ public class CharacterSelect {
                     startColor = new Color(63,188,239);
                 }
                 g.setColor(startColor);
-                g.fillRect(116,96,180,180);
+                g.fillRect(119,100,180,180);
+                g.fillRect(348,100,180,180);
+                g.fillRect(577,100,180,180);
+                g.fillRect(806,100,180,180);
+                g.fillRect(119,539,180,180);
+                g.fillRect(348,539,180,180);
+                g.fillRect(577,539,180,180);
+                g.fillRect(806,539,180,180);
             }
         };
     }
@@ -47,33 +52,46 @@ public class CharacterSelect {
         player1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         player1.setTitle("Character Select");
         player1.add(p1Comp);
-        player1.addKeyListener(new KeyListener() {
-
+        player1.addMouseListener(new MouseListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void mouseClicked(MouseEvent e) {
 
             }
 
             @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.equals("d") || e.equals("D")) {
-
-                } else if (e.equals("a") || e.equals("A")) {
-
-                } else if (e.equals("w") || e.equals("W")) {
-
-                } else if (e.equals("s") || e.equals("S")) {
-
+            public void mousePressed(MouseEvent e) {
+                if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
+                    changeButtonColor();
                 }
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void mouseReleased(MouseEvent e) {
+                if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
+                    changeButtonColor();
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
             }
         });
-
         player1.setVisible(true);
+    }
 
+    public void changeButtonColor() {
+        if (startColor.equals(new Color(63,188,239))) {
+            startColor = new Color(255,255,255);
+        } else {
+            startColor = new Color(63,255,239);
+        }
+        player1.repaint();
     }
 }
 
