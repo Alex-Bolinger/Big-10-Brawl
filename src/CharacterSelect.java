@@ -22,7 +22,7 @@ public class CharacterSelect {
     private Color indiana;
 
     private int characterValue;
-    private int player1Select = 0;
+    private int player1Select;
 
     private BufferedImage pete;
     private BufferedImage hawkeye;
@@ -37,6 +37,9 @@ public class CharacterSelect {
 
 
     public CharacterSelect(int playerNumber) {
+        if (playerNumber == 1) {
+            player1Select = 0;
+        }
         finished = false;
         player1 = new JFrame();
         p1Comp = new JComponent() {
@@ -108,7 +111,7 @@ public class CharacterSelect {
                         System.out.println("Stack Error");
                     }
                 }
-                if (playerNumber == 2) {
+                if (playerNumber > 1) {
                     if (player1Select == 0) {
                         g.drawImage(pete,313,671,null);
                     } else if (player1Select == 1) {
@@ -140,7 +143,6 @@ public class CharacterSelect {
 
                 g.setColor(purdue);
                 g.fillRect(117,98,180,180);
-
                 g.setColor(iowa);
                 g.fillRect(346,98,180,180);
                 g.setColor(wisconsin);
@@ -189,27 +191,35 @@ public class CharacterSelect {
             public void mousePressed(MouseEvent e) {
                 if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 111 && e.getY() <= 310) {
                     characterValue = 0;
+                    player1Select = 0;
                     changePurdueButtonColor();
                 } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 111 && e.getY() <= 310) {
                     characterValue = 1;
+                    player1Select = 1;
                     changeIowaButtonColor();
                 } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 111 && e.getY() <= 310) {
                     characterValue = 2;
+                    player1Select = 2;
                     changeWisconsinButtonColor();
                 } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 111 && e.getY() <= 310) {
                     characterValue = 7;
+                    player1Select = 7;
                     changeMinnesotaButtonColor();
                 } else if (e.getX() >= 117 && e.getX() <= 297 && e.getY() >= 369 && e.getY() <= 568) {
                     characterValue = 4;
+                    player1Select = 4;
                     changeOSUButtonColor();
                 } else if (e.getX() >= 346 && e.getX() <= 526 && e.getY() >= 369 && e.getY() <= 568) {
                     characterValue = 5;
+                    player1Select = 5;
                     changeMSUButtonColor();
                 } else if (e.getX() >= 575 && e.getX() <= 756 && e.getY() >= 369 && e.getY() <= 568) {
                     characterValue = 6;
+                    player1Select = 6;
                     changeMichiganButtonColor();
                 } else if (e.getX() >= 804 && e.getX() <= 984 && e.getY() >= 369 && e.getY() <= 568) {
                     characterValue = 3;
+                    player1Select = 3;
                     changeIndianaButtonColor();
                 }
             }
