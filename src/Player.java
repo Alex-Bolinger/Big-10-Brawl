@@ -7,6 +7,7 @@ public class Player {
     private int character;
     private int speed;
     private int velocity;
+    private int hVelocity;
     private Point location;
     private String facing;
     private String moveState;
@@ -90,5 +91,13 @@ public class Player {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public int gethVelocity() {
+        return hVelocity;
+    }
+
+    public void sethVelocity(int hVelocity) {
+        this.hVelocity = hVelocity;
     }
 }

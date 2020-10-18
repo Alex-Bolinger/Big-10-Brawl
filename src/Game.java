@@ -61,11 +61,11 @@ public class Game {
             @Override
             public void keyTyped(KeyEvent e) {
                 if (e.getKeyChar() == 'w') {
-                    jump(player1);
-                    System.out.println('w');
-                    System.out.println(player1.getVelocity());
-                }
+                    if (player1.getLocation().y == 250) {
+                        jump(player1);
+                    }
 
+                }
                 if (e.getKeyChar() == 'a') {
                     player1.setFacing("L");
                 }
@@ -74,15 +74,17 @@ public class Game {
                     player1.setFacing("R");
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    jump(player2);
+                if (e.getKeyChar() == 'i') {
+                    if (player2.getLocation().y == 250) {
+                        jump(player2);
+                    }
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                if (e.getKeyChar() == 'l') {
                     player2.setFacing("R");
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                if (e.getKeyChar() == 'j') {
                     player2.setFacing("L");
                 }
             }
@@ -107,13 +109,35 @@ public class Game {
                 accelerate(player2);
                 changeY(player1);
                 changeY(player2);
+                updateSprites();
             }
         });
         frameUpdate.start();
     }
 
+    public void updateSprites() {
+        try {
+            sprite1 = ImageIO.read(new File("bin/Characters/" +
+                    Character.getCharacterName(player1.getCharacter()) + "/" +
+                    Character.getCharacterName(player1.getCharacter()) + "_" +
+                    player1.getFacing() +
+                    player1.getMoveState() + ".png"));
+            sprite2 = ImageIO.read(new File("bin/Characters/" +
+                    Character.getCharacterName(player2.getCharacter()) + "/" +
+                    Character.getCharacterName(player2.getCharacter()) + "_" +
+                    player2.getFacing() +
+                    player2.getMoveState() + ".png"));
+        } catch (IOException e) {
+            System.out.println("Stack error");
+        }
+    }
+
+    public void changeX(Player player) {
+        player.setLocation(new Point(player.getLocation().x + player.gethVelocity(), player.getLocation().y));
+    }
+
     public void jump(Player player) {
-        player.setVelocity(player.getSpeed() / 6);
+        player.setVelocity(player.getSpeed() / 5);
     }
 
     public void accelerate(Player player) {
