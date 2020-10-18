@@ -22,13 +22,11 @@ public class Big10Brawl {
     }
 
     private JFrame welcome;
-    private JFrame waiting;
+    private JFrame playerSelect;
     private JComponent welComp;
 
     private Color startColor;
     private Color startTextColor;
-    private Color joinColor;
-    private Color joinTextColor;
 
     public Big10Brawl() {
         welcome = new JFrame();
@@ -52,18 +50,10 @@ public class Big10Brawl {
                     startTextColor = new Color(255,255,255);
                 }
                 g.setColor(startColor);
-                g.fillRect(477,646,276,111);
-                if (joinColor == null) {
-                    joinColor = new Color(0,0,0);
-                    joinTextColor = new Color(255, 255, 255);
-                }
-                g.setColor(joinColor);
-                g.fillRect(797,646,276,111);
+                g.fillRect(637,645,276,111);
                 g.setFont(new Font(Font.SERIF,Font.BOLD,40));
                 g.setColor(startTextColor);
                 g.drawString("Start", 570, 710);
-                g.setColor(joinTextColor);
-                g.drawString("Join", 895, 710);
 
             }
         };
@@ -84,8 +74,6 @@ public class Big10Brawl {
             public void mousePressed(MouseEvent e) {
                 if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
                     changeStartColor();
-                } else if (e.getX() >= 797 && e.getX() <= 1073 && e.getY() >= 646 && e.getY() <= 757) {
-                    changeJoinColor();
                 }
             }
 
@@ -93,10 +81,6 @@ public class Big10Brawl {
             public void mouseReleased(MouseEvent e) {
                 if (e.getX() >= 477 && e.getX() <= 753 && e.getY() >= 646 && e.getY() <= 757) {
                     changeStartColor();
-                    startWaiting();
-                } else if (e.getX() >= 797 && e.getX() <= 1073 && e.getY() >= 646 && e.getY() <= 757) {
-                    changeJoinColor();
-                    join();
                 }
             }
 
@@ -127,28 +111,7 @@ public class Big10Brawl {
         welcome.repaint();
     }
 
-    //changes the color of the join button
-    public void changeJoinColor() {
-        if (joinColor.equals(new Color(0,0,0))) {
-            joinColor = new Color(255,255,255);
-            joinTextColor = new Color(0,0,0);
-        } else {
-            joinColor = new Color(0,0,0);
-            joinTextColor = new Color(255,255,255);
-        }
-        welcome.repaint();
-    }
+    public void startSelectionScreen() {
 
-    public void startWaiting() {
-        welcome.setVisible(false);
-        waiting = new JFrame();
-        waiting.setSize(1550,838);
-        waiting.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        waiting.setTitle("Big Ten Brawl");
-        waiting.setVisible(true);
-    }
-
-    public void join() {
-        String ip = JOptionPane.showInputDialog("Enter IP of other player");
     }
 }
